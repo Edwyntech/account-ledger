@@ -1,0 +1,62 @@
+// suppress inspection "AsciiDocLinkResolve" for whole file
+= *Présentation*
+
+Ce document décrit le fonctionnement du service de livre de <<compte,comptes>> de la banque Comptes En Ligne (CEL).
+
+Le but de ce service est de maintenir une source de vérité pour les avoirs des <<compte,comptes>>.
+
+Le logiciel de l'application est disponible depuis son <<github-repo,dépôt>> en accès libre.
+
+Cette documentation est également consultable <<github-doc,en ligne>>.
+
+== La banque Comptes En Lignes (CEL)
+
+La banque Comptes En Ligne ou CEL a été créée il y a quelques secondes.
+C'est de facto la première banque pour les comptes courants et d'épargne.
+
+Cet établissement bancaire français est identifié par son code de banque `12345`.
+
+CEL n'a pas d'agences physiques, donc pas de code d'agence.
+
+== Fonctionnalités Du Service
+
+Le service est un livre de <<compte,comptes>>, accessible aux clients du CEL.
+
+Un client peut à tout moment :
+
+1. Consulter la liste de ses <<compte,comptes>>
+2. Consulter le <<solde,solde>> d'un de ses <<compte,comptes>>
+3. Consulter les <<mouvement,mouvements>> sur un de ses <<compte,comptes>>
+
+== Événements Sur Les <<compte,Comptes>>
+
+=== <<compte,Compte>> Créé
+
+La création d'un <<compte,compte>> se fait à la demande du client.
+
+La création d'un <<compte,compte>> contient :
+
+* L'<<iban,IBAN>> du compte.
+* Le libellé du compte, choisi par le client ou attribué par défaut.
+
+=== <<mouvement,Mouvement>> Appliqué
+
+Les opérations sur le <<compte,compte>> sont des <<mouvement,mouvements>> bancaires, à savoir des crédits ou des débits.
+
+Un <<mouvement,mouvement>> bancaire contient :
+
+* L'<<iban,IBAN>> du <<compte,compte>> observé
+* L'instant de l'opération
+* Le montant de l'opération
+
+IMPORTANT: La devise du <<mouvement,mouvement>> peut être différent de la devise du <<compte,compte>> sur lequel ce <<mouvement,mouvement>> opère.
+
+=== <<solde,Solde>> Mis-À-Jour
+
+Une opération implique une modification du <<solde,solde>>.
+
+La mise-à-jour du <<solde,solde>> d'un <<compte,compte>> contient :
+
+* L'<<iban,IBAN>> du <<compte,compte>>.
+* L'instant de mise-à-jour
+* Le nouveau montant
