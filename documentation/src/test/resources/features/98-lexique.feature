@@ -6,7 +6,7 @@ Fonctionnalité: Lexique
 
   [glossary]
 
-  [[client, Client]] Client (anglais: _Customer_) :: Personne physique ou morale qui détient un <<compte,compte>> au CEL.
+  [[client, Client]] Client (anglais: _Customer_) :: Personne physique ou morale inscrite au CEL.
   +
   Un client est identifié par :
 
@@ -19,9 +19,10 @@ Fonctionnalité: Lexique
   +
   Un <<compte,compte>> CEL possède donc :
 
-  * Son <<iban,IBAN>>
-  * Un libellé donné par le client à sa création, par défaut "Compte courant" ou "Compte d'épargne" selon son type
+  * Son <<iban,IBAN>>.
   * L'identifiant du client qui détient ce <<compte,compte>>.
+  * Un libellé donné par le client à sa création, par défaut "Compte courant" ou "Compte d'épargne" selon son type.
+  * Sa date de création.
   +
   [IMPORTANT]
   ====

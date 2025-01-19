@@ -1,0 +1,24 @@
+ledger:
+  topics:
+    account-created: topic-account-created
+    movement-applied: topic-movement-applied
+    balance-updated: topic-balance-updated
+  stores:
+    account-created: store-account-created
+    movements-list: store-movements-list
+    balance-updated: store-balance-updated
+spring:
+  application:
+    name: account-ledger
+  kafka:
+    producer:
+      key-serializer: tech.edwyn.ledger.application.streams.serde.IbanSerializer
+      value-serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+    streams:
+      properties:
+        default.key.serde: tech.edwyn.ledger.application.streams.serde.IbanSerde
+        default.value.serde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+        processing.guarantee: exactly_once_v2
+        topology.optimization: all
+    properties:
+      schema.registry.url: http://localhost:8081

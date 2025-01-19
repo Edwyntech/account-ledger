@@ -2,3 +2,12 @@ logging:
   level:
     root: warn
     tech.edwyn.ledger: trace
+    org.javamoney.moneta: off
+    org.springframework.kafka.config.StreamsBuilderFactoryBean: debug
+spring:
+  kafka:
+    streams:
+      auto-startup: false
+      properties:
+        schema.registry.url: mock://localhost
+      state-dir: target/kafka/${random.uuid}

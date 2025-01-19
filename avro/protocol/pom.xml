@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>tech.edwyn.ledger.avro</groupId>
+    <artifactId>avro</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>protocol</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>tech.edwyn.ledger.avro</groupId>
+      <artifactId>types</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro-maven-plugin</artifactId>
+        <configuration>
+          <customLogicalTypeFactories>
+            <customLogicalTypeFactory>tech.edwyn.ledger.avro.types.IbanLogicalTypeFactory</customLogicalTypeFactory>
+            <customLogicalTypeFactory>tech.edwyn.ledger.avro.types.MoneyLogicalTypeFactory</customLogicalTypeFactory>
+          </customLogicalTypeFactories>
+          <customConversions>
+            <conversion>tech.edwyn.ledger.avro.types.IbanConversion</conversion>
+            <conversion>tech.edwyn.ledger.avro.types.MoneyConversion</conversion>
+          </customConversions>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>tech.edwyn.ledger.avro</groupId>
+            <artifactId>types</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

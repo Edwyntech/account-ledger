@@ -1,0 +1,27 @@
+/*
+ * Comment for license information.
+ */
+namespace tech.edwyn.ledger.avro.account;
+
+record AccountCreated {
+  timestamp_ms timestamp;
+  @logicalType("uuid") string customerId;
+  @logicalType("iban") string iban;
+  string label;
+}
+
+record MovementApplied {
+  timestamp_ms timestamp;
+  @logicalType("iban") string iban;
+  @logicalType("money") string amount;
+}
+
+record MovementsList {
+  array<MovementApplied> movementsApplied;
+}
+
+record BalanceUpdated {
+  timestamp_ms timestamp;
+  @logicalType("iban") string iban;
+  @logicalType("money") string amount;
+}

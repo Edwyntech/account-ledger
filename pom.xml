@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.rdlopes</groupId>
@@ -11,11 +12,115 @@
   <artifactId>account-ledger</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+
   <modules>
+    <module>avro</module>
+    <module>domain</module>
+    <module>application</module>
     <module>documentation</module>
   </modules>
 
+  <properties>
+    <avro.version>1.12.0</avro.version>
+    <commons-compress.version>1.26.2</commons-compress.version>
+    <commons-io.version>2.14.0</commons-io.version>
+    <iban4j.version>3.2.9-RELEASE</iban4j.version>
+    <kafka-streams-avro-serde.version>7.8.0</kafka-streams-avro-serde.version>
+    <moneta.version>1.4.4</moneta.version>
+    <scala-library.version>2.13.9</scala-library.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Third Parties -->
+      <dependency>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro</artifactId>
+        <version>${avro.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-compress</artifactId>
+        <version>${commons-compress.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.iban4j</groupId>
+        <artifactId>iban4j</artifactId>
+        <version>${iban4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.confluent</groupId>
+        <artifactId>kafka-streams-avro-serde</artifactId>
+        <version>${kafka-streams-avro-serde.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.javamoney</groupId>
+        <artifactId>moneta</artifactId>
+        <version>${moneta.version}</version>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-library</artifactId>
+        <version>${scala-library.version}</version>
+      </dependency>
+      <!-- Project -->
+      <dependency>
+        <groupId>tech.edwyn.ledger.avro</groupId>
+        <artifactId>types</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>tech.edwyn.ledger.avro</groupId>
+        <artifactId>protocol</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>tech.edwyn.ledger</groupId>
+        <artifactId>domain</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>tech.edwyn.ledger</groupId>
+        <artifactId>application</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>confluent</id>
+      <url>https://packages.confluent.io/maven/</url>
+    </repository>
+  </repositories>
+
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro-maven-plugin</artifactId>
+          <version>${avro.version}</version>
+          <executions>
+            <execution>
+              <id>schemas</id>
+              <goals>
+                <goal>schema</goal>
+                <goal>protocol</goal>
+                <goal>idl-protocol</goal>
+              </goals>
+              <phase>generate-sources</phase>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
