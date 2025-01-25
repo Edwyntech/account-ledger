@@ -4,7 +4,8 @@ import tech.edwyn.ledger.domain.Balance;
 
 import javax.money.format.MonetaryFormats;
 import java.time.Instant;
-import java.util.Locale;
+
+import static java.util.Locale.FRANCE;
 
 public record AccountBalanceDto(
   String iban,
@@ -15,7 +16,7 @@ public record AccountBalanceDto(
     return new AccountBalanceDto(
       balance.iban()
              .toFormattedString(),
-      MonetaryFormats.getAmountFormat(Locale.getDefault())
+      MonetaryFormats.getAmountFormat(FRANCE)
                      .format(balance.amount()),
       balance.timestamp());
   }
