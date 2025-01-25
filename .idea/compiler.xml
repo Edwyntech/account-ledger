@@ -18,8 +18,8 @@
         <module name="protocol" />
         <module name="types" />
         <module name="application" />
-        <module name="domain" />
         <module name="documentation" />
+        <module name="domain" />
       </profile>
     </annotationProcessing>
   </component>

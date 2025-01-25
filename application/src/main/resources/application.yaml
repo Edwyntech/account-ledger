@@ -10,6 +10,9 @@ ledger:
 spring:
   application:
     name: account-ledger
+  docker:
+    compose:
+      enabled: false
   kafka:
     producer:
       key-serializer: tech.edwyn.ledger.application.streams.serde.IbanSerializer
@@ -20,5 +23,7 @@ spring:
         default.value.serde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
         processing.guarantee: exactly_once_v2
         topology.optimization: all
-    properties:
-      schema.registry.url: http://localhost:8081
+logging:
+  level:
+    root: warn
+    tech.edwyn: info

@@ -1,0 +1,7 @@
+spring:
+  docker:
+    compose:
+      enabled: true
+  kafka:
+    properties:
+      schema.registry.url: http://localhost:8085
