@@ -2,7 +2,7 @@
 :author:        Edwyn Tech
 :owner:         Edwyntech
 :email:         mailto:contact@edwyn.tech
-:project:       mowitnow
+:project:       account-ledger
 :key:           {owner}_{project}
 :repo:          https://github.com/{owner}/{project}
 :documentation: https://{owner}.github.io/{project}
