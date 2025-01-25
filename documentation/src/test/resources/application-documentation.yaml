@@ -1,7 +1,7 @@
 logging:
   level:
     root: warn
-    tech.edwyn.ledger: trace
+    tech.edwyn.ledger: info
     org.javamoney.moneta: off
     org.springframework.kafka.config.StreamsBuilderFactoryBean: debug
 spring:
