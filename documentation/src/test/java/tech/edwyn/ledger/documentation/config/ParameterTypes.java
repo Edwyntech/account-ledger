@@ -10,6 +10,7 @@ import tech.edwyn.ledger.domain.Account;
 import tech.edwyn.ledger.domain.Customer;
 import tech.edwyn.ledger.domain.Movement;
 
+import javax.money.format.MonetaryFormats;
 import java.lang.reflect.Type;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.UUID;
 
+import static java.util.Locale.FRANCE;
 import static org.iban4j.IbanFormat.Default;
 
 public class ParameterTypes {
@@ -92,8 +94,9 @@ public class ParameterTypes {
     var timestampString = entries.get("Instant");
     var ibanString      = entries.get("IBAN");
     var amountString    = entries.get("Montant");
+    var amount = Money.parse(amountString, MonetaryFormats.getAmountFormat(FRANCE));
     
-    return new Movement(iban(ibanString), Money.parse(amountString), instant(timestampString));
+    return new Movement(iban(ibanString), amount, instant(timestampString));
   }
   
 }

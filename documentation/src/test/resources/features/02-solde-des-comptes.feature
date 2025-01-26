@@ -33,13 +33,13 @@ Fonctionnalité: Solde Des Comptes
     }
     """
 
-  Scénario: Crédit de EUR 100.00
+  Scénario: Crédit de 100,00 EUR
     Etant donné que CEL a créé le compte
       | IBAN                              | Client     | Libellé | Créé le               |
       | FR97 1234 5978 0100 0000 0000 134 | Christophe |         | 18/01/2025 à 12:00:00 |
     Et que les mouvements suivants ont été constatés
       | Instant               | IBAN                              | Montant    |
-      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | EUR 100.00 |
+      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | 100,00 EUR |
     Lorsque Christophe requiert le solde du compte FR97 1234 5978 0100 0000 0000 134
     Alors le solde retourné doit être
     """json
@@ -50,7 +50,7 @@ Fonctionnalité: Solde Des Comptes
     }
     """
 
-  Scénario: Crédit de USD 100.00
+  Scénario: Crédit de 100,00 USD
 
   Un mouvement peut s'appliquer sur une devise différente de celle du compte.
   Dans ce cas, une conversion peut s'appliquer.
@@ -62,7 +62,7 @@ Fonctionnalité: Solde Des Comptes
       | FR97 1234 5978 0100 0000 0000 134 | Christophe |         | 18/01/2025 à 12:00:00 |
     Et que les mouvements suivants ont été constatés
       | Instant               | IBAN                              | Montant    |
-      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | USD 100.00 |
+      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | 100,00 USD |
     Lorsque Christophe requiert le solde du compte FR97 1234 5978 0100 0000 0000 134
     Alors le solde retourné doit être
     """json
@@ -73,14 +73,14 @@ Fonctionnalité: Solde Des Comptes
     }
     """
 
-  Scénario: Crédit de EUR 100.00 puis débit de EUR 50.00
+  Scénario: Crédit de 100,00 EUR puis débit de 50,00 EUR
     Etant donné que CEL a créé le compte
       | IBAN                              | Client     | Libellé | Créé le               |
       | FR97 1234 5978 0100 0000 0000 134 | Christophe |         | 18/01/2025 à 12:00:00 |
     Et que les mouvements suivants ont été constatés
       | Instant               | IBAN                              | Montant    |
-      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | EUR 100.00 |
-      | 18/01/2025 à 12:50:00 | FR97 1234 5978 0100 0000 0000 134 | EUR -50.00 |
+      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | 100,00 EUR |
+      | 18/01/2025 à 12:50:00 | FR97 1234 5978 0100 0000 0000 134 | -50,00 EUR |
     Lorsque Christophe requiert le solde du compte FR97 1234 5978 0100 0000 0000 134
     Alors le solde retourné doit être
     """json
@@ -91,13 +91,13 @@ Fonctionnalité: Solde Des Comptes
     }
     """
 
-  Scénario: Débit de EUR 100.00
+  Scénario: Débit de 100,00 EUR
     Etant donné que CEL a créé le compte
       | IBAN                              | Client     | Libellé | Créé le               |
       | FR97 1234 5978 0100 0000 0000 134 | Christophe |         | 18/01/2025 à 12:00:00 |
     Et que les mouvements suivants ont été constatés
       | Instant               | IBAN                              | Montant     |
-      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | EUR -100.00 |
+      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | -100,00 EUR |
     Lorsque Christophe requiert le solde du compte FR97 1234 5978 0100 0000 0000 134
     Alors le solde retourné doit être
     """json
@@ -108,15 +108,15 @@ Fonctionnalité: Solde Des Comptes
     }
     """
 
-  Scénario: Crédit de EUR 100.00 sur plusieurs comptes
+  Scénario: Crédit de 100,00 EUR sur plusieurs comptes
     Etant donné que CEL a créé les comptes
       | IBAN                              | Client     | Libellé  | Créé le               |
       | FR97 1234 5978 0100 0000 0000 134 | Christophe | Perso    | 18/01/2025 à 12:00:00 |
       | FR53 1234 5978 0200 0000 0000 135 | Christophe | Tirelire | 18/01/2025 à 12:00:00 |
     Et que les mouvements suivants ont été constatés
       | Instant               | IBAN                              | Montant    |
-      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | EUR 100.00 |
-      | 18/01/2025 à 12:30:00 | FR53 1234 5978 0200 0000 0000 135 | EUR 100.00 |
+      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | 100,00 EUR |
+      | 18/01/2025 à 12:30:00 | FR53 1234 5978 0200 0000 0000 135 | 100,00 EUR |
     Lorsque Christophe requiert le solde du compte FR97 1234 5978 0100 0000 0000 134
     Alors le solde retourné doit être
     """json
@@ -127,15 +127,15 @@ Fonctionnalité: Solde Des Comptes
     }
     """
 
-  Scénario: Crédit de EUR 100.00 sur les comptes de différents clients
+  Scénario: Crédit de 100,00 EUR sur les comptes de différents clients
     Etant donné que CEL a créé les comptes
       | IBAN                              | Client     | Libellé | Créé le               |
       | FR97 1234 5978 0100 0000 0000 134 | Christophe | Perso   | 18/01/2025 à 12:00:00 |
       | FR38 1234 5978 0100 0000 0000 226 | Caroline   |         | 18/01/2025 à 12:00:00 |
     Et que les mouvements suivants ont été constatés
       | Instant               | IBAN                              | Montant    |
-      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | EUR 100.00 |
-      | 18/01/2025 à 12:30:00 | FR38 1234 5978 0100 0000 0000 226 | EUR 100.00 |
+      | 18/01/2025 à 12:10:00 | FR97 1234 5978 0100 0000 0000 134 | 100,00 EUR |
+      | 18/01/2025 à 12:30:00 | FR38 1234 5978 0100 0000 0000 226 | 100,00 EUR |
     Lorsque Christophe requiert le solde du compte FR97 1234 5978 0100 0000 0000 134
     Alors le solde retourné doit être
     """json
