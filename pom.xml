@@ -24,7 +24,7 @@
     <avro.version>1.12.0</avro.version>
     <commons-compress.version>1.27.1</commons-compress.version>
     <commons-io.version>2.18.0</commons-io.version>
-    <iban4j.version>3.2.10-RELEASE</iban4j.version>
+    <iban4j.version>3.2.11-RELEASE</iban4j.version>
     <kafka-streams-avro-serde.version>7.8.0</kafka-streams-avro-serde.version>
     <moneta.version>1.4.4</moneta.version>
     <scala-library.version>2.13.16</scala-library.version>
